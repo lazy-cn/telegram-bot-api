@@ -288,7 +288,7 @@ type Chat struct {
 	// supergroups. Returned only in getChat.
 	//
 	// optional
-	Permissions *ChatPermissions `json:"permissions,omitempty"`
+	Permissions *ChatPermissions `json:"permissions"`
 	// SlowModeDelay is for supergroups, the minimum allowed delay between
 	// consecutive messages sent by each unpriviledged user. Returned only in
 	// getChat.
@@ -1281,6 +1281,8 @@ type KeyboardButton struct {
 	//
 	// optional
 	RequestPoll *KeyboardButtonPollType `json:"request_poll,omitempty"`
+
+	WebApp string `json:"web_app,omitempty"`
 }
 
 // KeyboardButtonPollType represents type of poll, which is allowed to
@@ -1378,6 +1380,12 @@ type InlineKeyboardButton struct {
 	//
 	// optional
 	Pay bool `json:"pay,omitempty"`
+
+	WebApp WebAppInfo `json:"web_app,omitempty"`
+}
+
+type WebAppInfo struct {
+	URL string `json:"url,omitempty"`
 }
 
 // LoginURL represents a parameter of the inline keyboard button used to
@@ -1707,28 +1715,28 @@ type ChatPermissions struct {
 	// contacts, locations and venues
 	//
 	// optional
-	CanSendMessages bool `json:"can_send_messages,omitempty"`
+	CanSendMessages bool `json:"can_send_messages"`
 	// CanSendMediaMessages is true, if the user is allowed to send audios,
 	// documents, photos, videos, video notes and voice notes, implies
 	// can_send_messages
 	//
 	// optional
-	CanSendMediaMessages bool `json:"can_send_media_messages,omitempty"`
+	CanSendMediaMessages bool `json:"can_send_media_messages"`
 	// CanSendPolls is true, if the user is allowed to send polls, implies
 	// can_send_messages
 	//
 	// optional
-	CanSendPolls bool `json:"can_send_polls,omitempty"`
+	CanSendPolls bool `json:"can_send_polls"`
 	// CanSendOtherMessages is true, if the user is allowed to send animations,
 	// games, stickers and use inline bots, implies can_send_media_messages
 	//
 	// optional
-	CanSendOtherMessages bool `json:"can_send_other_messages,omitempty"`
+	CanSendOtherMessages bool `json:"can_send_other_messages"`
 	// CanAddWebPagePreviews is true, if the user is allowed to add web page
 	// previews to their messages, implies can_send_media_messages
 	//
 	// optional
-	CanAddWebPagePreviews bool `json:"can_add_web_page_previews,omitempty"`
+	CanAddWebPagePreviews bool `json:"can_add_web_page_previews"`
 	// CanChangeInfo is true, if the user is allowed to change the chat title,
 	// photo and other settings. Ignored in public supergroups
 	//
